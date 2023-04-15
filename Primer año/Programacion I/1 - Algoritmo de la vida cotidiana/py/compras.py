@@ -9,43 +9,79 @@
 #     "tornillos"
 # ]
 
-def definirFaltantes(param): 
-    print("Revisa que hace falta en la casa")
-    
-    print(f"Hacen falta {param}? 1. Si 2.No?")
-    confirmComida = int(input()) 
-    if confirmComida == 1: 
-        print("Escribe los alimentos que deberás conseguir")
-        faltantesComida = input()
-    
-    print("Hace falta algun otro artículo del hogar? 1.Si 2.No")
-    confirmOtros = int(input()) 
-    if confirmOtros == 1:
-        print("Escribe los artículos que deberás conseguir")
-        faltantesOtros = input() 
-        
-    print(f"Deberas conseguir lo siguiente: 1. Comida: {faltantesComida} 2. Otros: {faltantesOtros}")
-    return faltantesComida, faltantesOtros
-    
-definirFaltantes("alimentos")
-definirFaltantes("artículo del hogar")
+
+import pyttsx3 
+
+
+# name = input("What's your name?")
+# engine.say(f"hola, {name}")
+
+
 
 def mediosDeTransporte(): 
-    print("Cual sera tu medio de transporte? 1. Auto 2.Caminando 3.Bici ")
+    engine = pyttsx3.init()
+    
+    engine.say("Cual sera tu medio de transporte? 1. Auto 2.Caminando 3.Bici ")
+    engine.runAndWait()
+    
     solitude = int(input())
     
     if solitude == 1 : 
-        print("Acordate de las llaves! Y revisa el agua")
+        engine.say("Acordate de las llaves! Y revisa el agua")
+        engine.runAndWait()
     elif solitude == 2: 
-        print("Bien, te toca hacer ejercicio asi que ponete ropa comoda")
+        engine.say("Bien, te toca hacer ejercicio asi que ponete ropa comoda")
+        engine.runAndWait()
     elif solitude == 3:
-        print("La cleta, buen ejercicio. Deberás llevar una mochila o algo para cargar los elementos de manera comoda. Las bolsas pueden meterse entre las ruedas.")
+        engine.say("La cleta, buen ejercicio. Deberás llevar una mochila o algo para cargar los elementos de manera comoda. Las bolsas pueden meterse entre las ruedas.")
+        engine.runAndWait()
     else: 
-        print("Disculpa, ese medio de transporte no esta disponible")
+        engine.say("Disculpa, ese medio de transporte no esta disponible")
+        engine.runAndWait()
 
-def establecimientos(): 
-    if len(faltantesComida) >= 0 & len(faltantesOtros) >= 0:
-        print(f"Debes ir a diversos establecimientos porque tienes los siguientes elementos: 1. {faltantesComida} 2.{faltantesOtros}")
+
+
+def establecimientos(faltantes1, faltantes2): 
+    engine = pyttsx3.init()
+    if len(faltantes1) >= 0 & len(faltantes2) >= 0:
+        engine.say(f"Debes ir a diversos establecimientos porque tienes los siguientes elementos: 1. {faltantes1} 2.{faltantes1}")
+        engine.runAndWait()
+    
+    engine.say("Debes ir a un sólo establecimiento.")
         
+
+def lista(): 
+    engine = pyttsx3.init()
+
+    engine.say("Revisa que hace falta en la casa")
+    engine.runAndWait()
+
+    engine.say("Hacen falta alimentos? 1. Si 2.No?")
+    engine.runAndWait()
+    
+    confirmComida = int(input()) 
+    if confirmComida == 1: 
+        engine.say("Escribe los alimentos que deberás conseguir")
+        engine.runAndWait()
+        faltantesComida = input()
+    
+    engine.say(f"Hace falta algun otro artículo del hogar? 1.Si 2.No")
+    engine.runAndWait()
+    
+    confirmOtros = int(input())
+    if confirmOtros == 1:
+        engine.say("Escribe los artículos que deberás conseguir")
+        engine.runAndWait()
+        faltantesOtros = input() 
+        
+        engine.say(f"Deberas conseguir lo siguiente: 1. Comida: {faltantesComida} 2. Otros: {faltantesOtros}")
+        engine.runAndWait()
+    
     mediosDeTransporte()
+    establecimientos(faltantesComida, faltantesOtros)
+    recorrido()
+  
+    
+lista()
+
     
