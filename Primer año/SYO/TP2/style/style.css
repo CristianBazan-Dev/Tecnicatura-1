@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+body{
+    background: #222;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif; 
+}
+
+.timeline-container{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.timeline{
+    height: 600px; 
+    width: 5px;
+    background: #fff; 
+}
+
+.branches{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+}
+
+.branch{
+    height: 3px; 
+    width: 80px; 
+    background: #fff; 
+    margin: 3em; 
+
+}
+
+.dot{
+    clip-path: circle();
+    background: rgb(53, 211, 53); 
+    width: 500px; 
+    height: 25px; 
+}
+
+.branch:nth-child(even){
+    transform: rotate(47deg); 
+    margin-left: -.5em; 
+    
+}
+.branch:nth-child(odd){
+    transform: rotate(-47deg); 
+    margin-right: -.5em; 
+}
